@@ -3,3 +3,8 @@
 
 # Ignore Gradle build output directory
 build
+
+*.xcuserstate
+*.DS_Store
+bin/
+*.class
