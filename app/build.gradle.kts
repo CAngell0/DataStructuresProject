@@ -34,10 +34,12 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "datastructuresproject.App"
+    mainClass = "datastructuresproject.controller.Runner"
 }
 
-tasks.named<Test>("test") {
-    // Use JUnit Platform for unit tests.
-    useJUnitPlatform()
+tasks.withType<Jar> {
+   manifest {
+      attributes["Main-Class"] = "datastructuresproject.controller.Runner"
+   }
 }
+
