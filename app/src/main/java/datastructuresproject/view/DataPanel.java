@@ -10,5 +10,6 @@ public class DataPanel extends JPanel {
    public DataPanel(Controller app){
       super();
       this.app = app;
+      
    }
 }
