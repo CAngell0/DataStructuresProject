@@ -18,7 +18,7 @@ public class Controller {
 
    public void start(){
       // setItUp();
-      hashItOut();
+      // hashItOut();
    }
 
    private void setItUp(){

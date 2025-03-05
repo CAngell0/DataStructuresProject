@@ -13,11 +13,13 @@ public class DataFrame extends JFrame {
       super();
       this.app = app;
       this.panel = new DataPanel(this.app);
+
+      setupFrame();
    }
 
    private void setupFrame(){
       this.setTitle("Data Structure Project");
-      this.setSize(1920, 1080);
+      this.setSize(1280, 720);
       this.setResizable(false);
       this.setDefaultCloseOperation(EXIT_ON_CLOSE);
       this.setContentPane(panel);
