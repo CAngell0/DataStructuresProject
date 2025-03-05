@@ -75,6 +75,6 @@ public class Controller {
       JOptionPane.showMessageDialog(window, result);
    }
    public void handleError(Exception error){
-
+      JOptionPane.showMessageDialog(window, error.getMessage(), "An Error Has Occurred", JOptionPane.ERROR_MESSAGE);
    }
 }
