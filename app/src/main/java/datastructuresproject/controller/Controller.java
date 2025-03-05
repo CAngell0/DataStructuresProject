@@ -1,7 +1,9 @@
 package datastructuresproject.controller;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 
 import javax.swing.JOptionPane;
 
@@ -15,7 +17,8 @@ public class Controller {
    }
 
    public void start(){
-      setItUp();
+      // setItUp();
+      hashItOut();
    }
 
    private void setItUp(){
@@ -46,7 +49,30 @@ public class Controller {
 
    }
    private void hashItOut(){
+      JOptionPane.showMessageDialog(window, "HashMap Demo:");
+      HashMap<String, Integer> mapDemo = new HashMap<String, Integer>();
 
+      mapDemo.put("",1);
+      mapDemo.put("text", Integer.valueOf(123));
+      int favoriteNumber = 27;
+      mapDemo.put("Carson", favoriteNumber);
+      mapDemo.put("Key", favoriteNumber);
+
+      for (Map.Entry<String, Integer> mapEntry : mapDemo.entrySet()){
+         String key = mapEntry.getKey();
+         int value = mapEntry.getValue();
+
+         JOptionPane.showMessageDialog(window, "Key " + key + " : Value " + value);
+      }
+
+      String result = "Hashmap Values:";
+
+      Iterator<Map.Entry<String, Integer>> hashInteger = mapDemo.entrySet().iterator();
+      while(hashInteger.hasNext()){
+         Map.Entry<String, Integer> entry = hashInteger.next();
+         result += "\n\"" + entry.getKey() + "\": " + entry.getValue();
+   }
+      JOptionPane.showMessageDialog(window, result);
    }
    public void handleError(Exception error){
 
