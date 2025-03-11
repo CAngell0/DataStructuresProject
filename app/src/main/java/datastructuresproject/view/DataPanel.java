@@ -92,4 +92,13 @@ public class DataPanel extends JPanel {
       layout.putConstraint(SpringLayout.EAST, scrollPane, -20, SpringLayout.WEST, nonLinearPanel);
       layout.putConstraint(SpringLayout.WEST, scrollPane, 20, SpringLayout.WEST, this);
    }
+
+   private void loadText(String content){
+      String loadedText = app.load(content + ".txt");
+      dataArea.setText(loadedText);
+
+      if (content.equals("Linear")){
+         dataArea.setBackground(Color.CYAN);
+      }
+   }
 }
