@@ -1,6 +1,8 @@
 package datastructuresproject.view;
 
 import javax.swing.*;
+
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,19 +10,25 @@ import java.util.Map;
 import datastructuresproject.controller.Controller;
 
 public class DataPanel extends JPanel {
-   Controller app;
-   SpringLayout layout;
-   JPanel nonLinearPanel;
-   JPanel linearPanel;
+   private Controller app;
+   private SpringLayout layout;
+   private JScrollPane scrollPane;
+   private JTextArea dataArea;
+   private JPanel nonLinearPanel;
+   private JPanel linearPanel;
 
-   HashMap<String, JButton> nonLinearButtons;
-   HashMap<String, JButton> linearButtons;
+   private  HashMap<String, JButton> nonLinearButtons;
+   private  HashMap<String, JButton> linearButtons;
    
    public DataPanel(Controller app){
       super();
       this.app = app;
       this.layout = new SpringLayout();
-      this.nonLinearPanel = new JPanel(new GridLayout(4, 2));
+
+      this.scrollPane = new JScrollPane();
+      this.dataArea = new JTextArea();
+
+      this.nonLinearPanel = new JPanel(new GridLayout(2, 4));
       this.linearPanel = new JPanel(new GridLayout(2,2));
       this.nonLinearButtons = new HashMap<String, JButton>();
       this.linearButtons = new HashMap<String, JButton>();
@@ -39,7 +47,9 @@ public class DataPanel extends JPanel {
       linearButtons.put("Stacks", new JButton("Stacks"));
       linearButtons.put("Queues", new JButton("Queues"));
 
+      setupDataText();
       setupPanel();
+      setupLayout();
    }
 
    private void setupPanel(){
@@ -55,6 +65,31 @@ public class DataPanel extends JPanel {
       this.add(nonLinearPanel);
       this.add(linearPanel);
 
+      this.add(scrollPane);
+
       repaint();
+   }
+
+   private void setupDataText() {
+      dataArea.setEditable(false);
+      dataArea.setBackground(Color.GRAY);
+      dataArea.setLineWrap(true);
+      dataArea.setWrapStyleWord(true);
+
+      scrollPane.setViewportView(dataArea);
+      scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+      scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+   }
+
+   private void setupLayout(){
+      layout.putConstraint(SpringLayout.WEST, nonLinearPanel, -300, SpringLayout.EAST, this);
+      layout.putConstraint(SpringLayout.EAST, nonLinearPanel, 0, SpringLayout.EAST, this);
+      layout.putConstraint(SpringLayout.SOUTH, nonLinearPanel, -200, SpringLayout.SOUTH, this);
+      layout.putConstraint(SpringLayout.NORTH, nonLinearPanel, 200, SpringLayout.NORTH, this);
+
+      layout.putConstraint(SpringLayout.NORTH, scrollPane, 0, SpringLayout.NORTH, nonLinearPanel);
+      layout.putConstraint(SpringLayout.SOUTH, scrollPane, 400, SpringLayout.NORTH, this);
+      layout.putConstraint(SpringLayout.EAST, scrollPane, -20, SpringLayout.WEST, nonLinearPanel);
+      layout.putConstraint(SpringLayout.WEST, scrollPane, 20, SpringLayout.WEST, this);
    }
 }
