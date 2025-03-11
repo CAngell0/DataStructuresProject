@@ -6,6 +6,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import java.net.URL;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import datastructuresproject.model.InternetCat;
+
 public class IOController {
    public static String readTextFromFile(Controller app, String path){
       String content = "";
@@ -32,5 +38,20 @@ public class IOController {
       } catch (FileNotFoundException error){
          app.handleError(error);
       }
+   }
+
+   public static Object readSingleJSON(Controller app, String urlBase, String appended){
+      ObjectMapper mapper = new ObjectMapper();
+
+      try {
+         if (urlBase.contains("cataas")){
+            InternetCat cat = mapper.readValue(new URL(urlBase + appended), InternetCat.class);
+            return cat;
+         }
+      } catch(IOException | ClassCastException error){
+         app.handleError(error);
+      }
+
+      return null;
    }
 }
