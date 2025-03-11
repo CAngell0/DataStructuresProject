@@ -77,4 +77,12 @@ public class Controller {
    public void handleError(Exception error){
       JOptionPane.showMessageDialog(window, error.getMessage(), "An Error Has Occurred", JOptionPane.ERROR_MESSAGE);
    }
+
+   public void save(String content, String filepath){
+      IOController.writeTextToFile(this, content, filepath);
+   }
+
+   public String load(String filepath){
+      return IOController.readTextFromFile(this, filepath);
+   }
 }

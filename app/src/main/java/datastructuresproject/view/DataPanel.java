@@ -72,7 +72,7 @@ public class DataPanel extends JPanel {
 
    private void setupDataText() {
       dataArea.setEditable(false);
-      dataArea.setBackground(Color.GRAY);
+      dataArea.setBackground(Color.LIGHT_GRAY);
       dataArea.setLineWrap(true);
       dataArea.setWrapStyleWord(true);
 

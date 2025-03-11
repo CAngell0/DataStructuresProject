@@ -1,0 +1,14 @@
+How to use Array and ArrayList:
+Both arrays and arraylists are accessed using indices. However they are initialized and interacted with in different ways.
+For example, arraylists access their indices using list.get(index) method.
+
+
+
+1. What is a Queue?
+Another linear data type that goes under the FIFO paradigm. You can think of it as a lunch line.
+
+2. How do you implement a Stack in Java?
+Use the Stack class paired with a <Type> syntax, like you would with an ArrayList.
+
+3. How do you implement a Queue in Java?
+Using a Queue<Type> for the variable declaration. And then a LinkedList for the initialization.
