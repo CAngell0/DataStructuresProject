@@ -1,5 +1,6 @@
 package datastructuresproject.controller;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -83,5 +84,11 @@ public class Controller {
 
    public String load(String filepath){
       return IOController.readTextFromFile(this, filepath);
+   }
+
+   public URL getCatImageURL(String source){
+      URL catImageURL = null;
+
+      return catImageURL;
    }
 }
