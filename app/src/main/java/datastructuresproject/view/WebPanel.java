@@ -107,8 +107,12 @@ public class WebPanel extends JPanel {
 
       try {
          BufferedImage image = ImageIO.read(app.getCatImageURL(catDetails));
+         if (image != null){
+            catPicture = new ImageIcon(image);
+         }
       } catch (IOException error){
-         
+         app.handleError(error);
       }
+      catLabel.setIcon(catPicture);
    }
 }
