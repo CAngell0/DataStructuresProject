@@ -115,4 +115,10 @@ public class WebPanel extends JPanel {
       }
       catLabel.setIcon(catPicture);
    }
+
+   private void getCats(String tag){
+      String results = app.addCat(tag);
+      catTextArea.setText(results);
+      loadCatImage(results);
+   }
 }

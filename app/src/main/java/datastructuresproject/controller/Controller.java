@@ -85,6 +85,10 @@ public class Controller {
    public String load(String filepath){
       return IOController.readTextFromFile(this, filepath);
    }
+   
+   public String addCat(String tags){
+      return "";
+   }
 
    public URL getCatImageURL(String source){
       URL catImageURL = null;
