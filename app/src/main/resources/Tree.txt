@@ -1,0 +1,7 @@
+A tree is a simple data structure that contains a hierarchy of values that are sorted into parent/children groups.
+
+1.What are 3 different types of trees in computer science?
+Binary tree, Ternary tree, and Generic tree
+
+2. What are the three major traversals for a Tree?
+Preorder, postorder, and inorder
