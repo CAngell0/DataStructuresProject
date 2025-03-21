@@ -114,4 +114,17 @@ public class Controller {
 
       return catImageURL;
    }
+
+   private int[] loadNumbers(String path){
+      int[] numbers = null;
+
+      String contents = load(path);
+      String[] values = contents.split(",");
+      numbers = new int[values.length];
+
+      for (int index = 0; index < numbers.length; index++){
+         numbers[index] = Integer.parseInt(values[index]);
+      }
+      return numbers;
+   }
 }
