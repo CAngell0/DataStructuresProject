@@ -2,6 +2,7 @@ package datastructuresproject.controller;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -112,6 +113,26 @@ public class Controller {
       URL catImageURL = null;
 
       return catImageURL;
+   }
+
+   public String showSort(){
+      String data = "";
+      data += generateRandomIntsToFile(20);
+      data += "\n";
+
+      int[] randomNumbers = loadNumbers("unsorted_numbers.csv");
+      insertionSort(randomNumbers);
+      data += "Now sorted!" + "\n";
+      data += Arrays.toString(randomNumbers);
+
+      data += generateRandomIntsToFile(15);
+      data += "\n";
+      randomNumbers = loadNumbers("unsorted_numbers.csv");
+      selectionSort(randomNumbers);
+      data += "Now sorted!" + "\n";
+      data += Arrays.toString(randomNumbers);
+
+      return data;
    }
 
    private void insertionSort(int[] data){

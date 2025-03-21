@@ -1,0 +1,14 @@
+In the hashItOut and setItUp methods, the iterator is used to go through the key/values of each data structure.
+Specifically, the iterator for the HashMap really just iterates through the Map.Entry data types in the structure.
+These contain the individual key and value pairs.
+
+While the iterator for the Set treats it similar to an for each loop with an array.
+
+1. What have we used already in Java that performs like an Iterator?
+A for each loop is something we’ve used.
+
+2. What are the key methods used in Iterator?
+   - next
+   - hasNext
+   - Remove
+   - forEachRemaining
