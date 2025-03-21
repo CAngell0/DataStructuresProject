@@ -115,6 +115,21 @@ public class Controller {
       return catImageURL;
    }
 
+   private String generateRandomIntsToFIle(int count){
+      String content = "";
+
+      for (int index = 0; index < count; index++){
+         int random = (int) (Math.random() * 1000);
+         content += random + "";
+         if (index != count - 1){
+            content += random + ",";
+         }
+      }
+
+      save(content, "unsorted_numbers.csv");
+      return content;
+   }
+
    private int[] loadNumbers(String path){
       int[] numbers = null;
 
