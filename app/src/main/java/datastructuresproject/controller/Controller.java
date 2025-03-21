@@ -114,6 +114,20 @@ public class Controller {
       return catImageURL;
    }
 
+   private void insertionSort(int[] data){
+      for (int outer = 1; outer < data.length; outer++){
+         int tested = data[outer];
+         int innerIndex = outer - 1;
+
+         while (innerIndex >= 0 && tested < data[innerIndex]){
+            data[innerIndex + 1] = data[innerIndex];
+            innerIndex--;
+         }
+
+         data[innerIndex + 1] = tested;
+      }
+   }
+
    private void selectionSort(int[] data){
       for (int outerLoop = 0; outerLoop < data.length; outerLoop++){
          int minIndex = outerLoop;
