@@ -82,7 +82,7 @@ public class Controller {
       while(hashInteger.hasNext()){
          Map.Entry<String, Integer> entry = hashInteger.next();
          result += "\n\"" + entry.getKey() + "\": " + entry.getValue();
-   }
+      }
       JOptionPane.showMessageDialog(window, result);
    }
    public void handleError(Exception error){
@@ -115,7 +115,7 @@ public class Controller {
       return catImageURL;
    }
 
-   private String generateRandomIntsToFIle(int count){
+   private String generateRandomIntsToFile(int count){
       String content = "";
 
       for (int index = 0; index < count; index++){
