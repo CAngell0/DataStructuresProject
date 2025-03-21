@@ -1,6 +1,7 @@
 package datastructuresproject.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -8,12 +9,22 @@ import java.util.Map;
 
 import javax.swing.JOptionPane;
 
+import datastructuresproject.model.InternetCat;
 import datastructuresproject.view.DataFrame;
 public class Controller {
    private DataFrame window;
+   private String catURLBase;
+   private String appendForJSON;
+   private String defaultTag;
+   private ArrayList<InternetCat> catList;
 
    public Controller(){
       this.window = new DataFrame(this);
+
+      this.catURLBase = "https://cataas.com/cat/";
+      this.appendForJSON = "?json=true";
+      this.defaultTag = "cute";
+      this.catList = new ArrayList<InternetCat>();
    }
 
    public void start(){
@@ -86,8 +97,16 @@ public class Controller {
       return IOController.readTextFromFile(this, filepath);
    }
    
-   public String addCat(String tags){
-      return "";
+
+   private void testCatAPI(){
+      // InternetCat demoCat = new InternetCat(null, "heyo", 0, defaultTag, catURLBase, appendForJSON)
+   }
+   public String addCat(String tag){
+      String details = "";
+      if (tag == null || tag.length() < 3){
+
+      }
+      return details;
    }
 
    public URL getCatImageURL(String source){

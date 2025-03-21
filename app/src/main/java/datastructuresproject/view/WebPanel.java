@@ -99,7 +99,7 @@ public class WebPanel extends JPanel {
    }
 
    private void setupListeners(){
-
+      getCatButton.addActionListener(click -> getCats(catTextField.getText()));
    }
 
    private void loadCatImage(String catDetails){

@@ -16,6 +16,7 @@ public class DataPanel extends JPanel {
    private JTextArea dataArea;
    private JPanel nonLinearPanel;
    private JPanel linearPanel;
+   private WebPanel webPanel;
 
    private  HashMap<String, JButton> nonLinearButtons;
    private  HashMap<String, JButton> linearButtons;
@@ -32,6 +33,8 @@ public class DataPanel extends JPanel {
       this.linearPanel = new JPanel(new GridLayout(2,2));
       this.nonLinearButtons = new HashMap<String, JButton>();
       this.linearButtons = new HashMap<String, JButton>();
+
+      this.webPanel = new WebPanel(app);
 
       nonLinearButtons.put("Comparing Objects", new JButton("Comparing Objects"));
       nonLinearButtons.put("Iterators", new JButton("Iterators"));
@@ -64,6 +67,7 @@ public class DataPanel extends JPanel {
 
       this.add(nonLinearPanel);
       this.add(linearPanel);
+      this.add(webPanel);
 
       this.add(scrollPane);
 
@@ -91,6 +95,11 @@ public class DataPanel extends JPanel {
       layout.putConstraint(SpringLayout.SOUTH, scrollPane, 400, SpringLayout.NORTH, this);
       layout.putConstraint(SpringLayout.EAST, scrollPane, -20, SpringLayout.WEST, nonLinearPanel);
       layout.putConstraint(SpringLayout.WEST, scrollPane, 20, SpringLayout.WEST, this);
+
+      layout.putConstraint(SpringLayout.NORTH, webPanel, 20, SpringLayout.NORTH, scrollPane);
+      layout.putConstraint(SpringLayout.SOUTH, webPanel, 0, SpringLayout.SOUTH, scrollPane);
+      layout.putConstraint(SpringLayout.EAST, webPanel, 20, SpringLayout.WEST, scrollPane);
+      layout.putConstraint(SpringLayout.WEST, webPanel, 20, SpringLayout.WEST, scrollPane);
    }
 
    private void loadText(String content){
