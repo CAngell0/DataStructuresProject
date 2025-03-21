@@ -1,0 +1,35 @@
+setItUp method code:
+
+private void setItUp(){
+   HashSet<String> testSetExample = new HashSet<String>();
+
+   testSetExample.add("Adding text");
+   testSetExample.add("Order not guaranteed");
+   String sample = "Some text";
+   testSetExample.add(sample);
+
+   JOptionPane.showMessageDialog(window, "Entry count: " + testSetExample.size());
+
+   boolean canAdd = testSetExample.add("Some text");
+   JOptionPane.showMessageDialog(window, "Text has been added: " + canAdd);
+
+   for (int count = 0; count < 4; count++){
+      testSetExample.add("Hash " + count);
+   }
+
+   String result = "";
+   Iterator<String> setIterator = testSetExample.iterator();
+   
+   while(setIterator.hasNext()){
+      result += setIterator.next() + "\n";
+   }
+
+   JOptionPane.showMessageDialog(window, "Set Items: \n" + result);
+}
+
+
+1. What properties do they have?
+They are unordered and cannot contain duplicate values.
+
+2. How do you loop over a Set?
+You can use a for-each loop or get it’s iterator with the .iterator() method.

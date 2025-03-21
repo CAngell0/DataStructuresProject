@@ -57,7 +57,6 @@ public class Controller {
       }
 
       JOptionPane.showMessageDialog(window, "Set Items: \n" + result);
-
    }
    private void hashItOut(){
       JOptionPane.showMessageDialog(window, "HashMap Demo:");
