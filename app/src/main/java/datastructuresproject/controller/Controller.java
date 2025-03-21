@@ -115,6 +115,28 @@ public class Controller {
       return catImageURL;
    }
 
+   private void selectionSort(int[] data){
+      for (int outerLoop = 0; outerLoop < data.length; outerLoop++){
+         int minIndex = outerLoop;
+
+         for (int inner = outerLoop + 1; inner < data.length; inner++){
+            if (data[inner] < data[minIndex]){
+               minIndex = inner;
+            }
+         }
+
+         if (minIndex != outerLoop){
+            swapItem(minIndex, outerLoop, data);
+         }
+      }
+   }
+
+   private void swapItem(int firstIndex, int secondIndex, int[] source){
+      int temp = source[firstIndex];
+      source[firstIndex] = source[secondIndex];
+      source[secondIndex] = temp;
+   }
+
    private String generateRandomIntsToFile(int count){
       String content = "";
 
