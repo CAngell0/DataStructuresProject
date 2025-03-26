@@ -1,0 +1,2 @@
+In order to make an object comparable, it needs to implement the Comparable<Type> interface.
+This allows it to be used with the .compareTo and similar methods.

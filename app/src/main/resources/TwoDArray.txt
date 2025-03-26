@@ -1,0 +1,19 @@
+To make a 2D array you essentially need to make an "array of arrays". Like this:
+Type[][] testArray = new Test[rowLen][colLen];
+
+To loop over a 2D array, you need a nested for loop. The first loop goes over each row, and the second goes over each column.
+The indices of each allow you to select and individual cell of the 2D array.
+
+for (int row = 0; row < testArray.length; row++){
+   for (int col = 0; col < testArray[0].length; col++){
+
+   }
+}
+
+I like the way the ice particle worked in my SandLab project. The ice floats to the top and stays there.
+if (row != 0 && grid[row - 1][col] == WATER){
+   swapParticles(row, col, row - 1, col);
+}
+if (row != grid.length - 1 && grid[row + 1][col] == EMPTY){
+   swapParticles(row, col, row + 1, col);
+}

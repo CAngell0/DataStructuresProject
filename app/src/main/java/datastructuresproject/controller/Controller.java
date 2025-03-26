@@ -120,14 +120,14 @@ public class Controller {
       data += generateRandomIntsToFile(20);
       data += "\n";
 
-      int[] randomNumbers = loadNumbers("unsorted_numbers.csv");
+      int[] randomNumbers = loadNumbers("unsorted.txt");
       insertionSort(randomNumbers);
       data += "Now sorted!" + "\n";
       data += Arrays.toString(randomNumbers);
 
       data += generateRandomIntsToFile(15);
       data += "\n";
-      randomNumbers = loadNumbers("unsorted_numbers.csv");
+      randomNumbers = loadNumbers("unsorted.txt");
       selectionSort(randomNumbers);
       data += "Now sorted!" + "\n";
       data += Arrays.toString(randomNumbers);
@@ -182,7 +182,7 @@ public class Controller {
          }
       }
 
-      save(content, "unsorted_numbers.csv");
+      save(content, "unsorted.txt");
       return content;
    }
 
@@ -194,7 +194,7 @@ public class Controller {
       numbers = new int[values.length];
 
       for (int index = 0; index < numbers.length; index++){
-         numbers[index] = Integer.parseInt(values[index]);
+         numbers[index] = Integer.parseInt(values[index].trim());
       }
       return numbers;
    }
