@@ -5,9 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import datastructuresproject.model.InternetCat;
@@ -45,10 +45,12 @@ public class IOController {
 
       try {
          if (urlBase.contains("cataas")){
-            InternetCat cat = mapper.readValue(new URL(urlBase + appended), InternetCat.class);
+            URL catUrl = (new URI(urlBase + appended)).toURL();
+            System.out.println(catUrl.toString());
+            InternetCat cat = mapper.readValue(catUrl, InternetCat.class);
             return cat;
          }
-      } catch(IOException | ClassCastException error){
+      } catch(IOException | URISyntaxException | ClassCastException error){
          app.handleError(error);
       }
 

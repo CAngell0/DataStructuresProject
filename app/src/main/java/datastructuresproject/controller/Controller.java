@@ -1,5 +1,7 @@
 package datastructuresproject.controller;
 
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,9 +16,9 @@ import datastructuresproject.model.InternetCat;
 import datastructuresproject.view.DataFrame;
 public class Controller {
    private DataFrame window;
-   private String catURLBase;
-   private String appendForJSON;
-   private String defaultTag;
+   private String catURLBase = "https://cataas.com/cat/";
+   private String appendForJSON = "?json=true";
+   private String defaultTag = "cute";
    private ArrayList<InternetCat> catList;
 
    public Controller(){
@@ -29,8 +31,7 @@ public class Controller {
    }
 
    public void start(){
-      // setItUp();
-      // hashItOut();
+      testCatAPI();
    }
 
    private void setItUp(){
@@ -99,18 +100,38 @@ public class Controller {
    
 
    private void testCatAPI(){
-      // InternetCat demoCat = new InternetCat(null, "heyo", 0, defaultTag, catURLBase, appendForJSON)
+      InternetCat testCat = (InternetCat) IOController.readSingleJSON(this, catURLBase, "orange" + appendForJSON);
+      String details = testCat.toString();
+      JOptionPane.showMessageDialog(window, details);
+
+      details = "mimetype: " + testCat.mimetype();
+      details += "\nid: " + testCat.id();
+      JOptionPane.showMessageDialog(window, details);
    }
    public String addCat(String tag){
       String details = "";
       if (tag == null || tag.length() < 3){
-
+         InternetCat cat = (InternetCat) IOController.readSingleJSON(this, catURLBase, appendForJSON);
+         if (cat != null){
+            catList.add(cat);
+            details = cat.toString();
+         }
       }
       return details;
    }
 
    public URL getCatImageURL(String source){
       URL catImageURL = null;
+
+      String imageFileName = "";
+      int index = source.indexOf("id=") + 3;
+      imageFileName = source.substring(index, source.length() - 1);
+
+      try {
+         URI.create(catURLBase + imageFileName).toURL();
+      } catch (MalformedURLException error){
+         handleError(error);
+      }
 
       return catImageURL;
    }
