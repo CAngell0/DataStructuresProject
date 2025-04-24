@@ -4,10 +4,12 @@
  * This generated file contains a sample Java application project to get you started.
  * For more details on building Java & JVM projects, please refer to https://docs.gradle.org/8.8/userguide/building_java_projects.html in the Gradle documentation.
  */
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    id("com.github.johnrengelman.shadow") version "8.0.0"
 }
 
 repositories {
@@ -41,9 +43,33 @@ application {
     mainClass = "datastructuresproject.controller.Runner"
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs("src/main/resources")
+        }
+    }
+}
+
+tasks {
+   named<ShadowJar>("shadowJar") {
+      archiveFileName.set("DataStructures.jar")
+      mergeServiceFiles()
+      manifest {
+         attributes(mapOf("Main-Class" to "datastructuresproject.controller.Runner"))
+      }
+   }
+}
+
 tasks.withType<Jar> {
    manifest {
       attributes["Main-Class"] = "datastructuresproject.controller.Runner"
+   }
+}
+
+tasks {
+   build {
+      dependsOn(shadowJar)
    }
 }
 

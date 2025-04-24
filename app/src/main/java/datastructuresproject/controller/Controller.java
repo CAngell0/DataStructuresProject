@@ -31,7 +31,7 @@ public class Controller {
    }
 
    public void start(){
-      testCatAPI();
+      // testCatAPI();
    }
 
    private void setItUp(){
@@ -110,29 +110,33 @@ public class Controller {
    }
    public String addCat(String tag){
       String details = "";
-      if (tag == null || tag.length() < 3){
-         InternetCat cat = (InternetCat) IOController.readSingleJSON(this, catURLBase, appendForJSON);
+      if (tag != null){
+         InternetCat cat = (InternetCat) IOController.readSingleJSON(this, catURLBase, tag + appendForJSON);
          if (cat != null){
             catList.add(cat);
             details = cat.toString();
          }
       }
+
       return details;
    }
 
    public URL getCatImageURL(String source){
       URL catImageURL = null;
 
+      // JOptionPane.showMessageDialog(window, source);
+
       String imageFileName = "";
       int index = source.indexOf("id=") + 3;
       imageFileName = source.substring(index, source.length() - 1);
 
       try {
-         URI.create(catURLBase + imageFileName).toURL();
+         catImageURL = URI.create(catURLBase + imageFileName).toURL();
       } catch (MalformedURLException error){
          handleError(error);
       }
 
+      JOptionPane.showMessageDialog(window, catImageURL);
       return catImageURL;
    }
 

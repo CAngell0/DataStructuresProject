@@ -5,6 +5,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -16,6 +17,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 
 import datastructuresproject.controller.Controller;
 
@@ -42,18 +44,16 @@ public class WebPanel extends JPanel {
       this.app = app;
 
       this.layout = new SpringLayout();
-      this.mainPanel = new JPanel(new GridLayout(1, 0));
-      this.menuPanel = new JPanel(new GridLayout(0,1));
+      this.mainPanel = new JPanel(new GridLayout(3, 0));
       this.catLabel = new JLabel("Cat");
-      this.getCatButton = new JButton("Download Cat Data");
-      this.saveCatButton = new JButton("Save Cat Data");
-      this.singleCatRadio = new JRadioButton("Single Cat");
-      this.groupCatRadio = new JRadioButton("Multiple Cats");
-      this.buttonGroup = new ButtonGroup();
+      this.getCatButton = new JButton("Get Cat Data");
+      // this.saveCatButton = new JButton("Save Cat Data");
+      // this.singleCatRadio = new JRadioButton("Single Cat");
+      // this.groupCatRadio = new JRadioButton("Multiple Cats");
+      // this.buttonGroup = new ButtonGroup();
       this.catPane = new JScrollPane();
       this.catTextArea = new JTextArea();
       this.catTextField = new JTextField();
-
 
       setupTextArea();
       setupPanel();
@@ -72,28 +72,28 @@ public class WebPanel extends JPanel {
    }
 
    private void setupPanel(){
-      setBackground(Color.DARK_GRAY);
+      // setBackground(Color.DARK_GRAY);
       setLayout(layout);
 
-      menuPanel.add(singleCatRadio);
-      menuPanel.add(groupCatRadio);
-      menuPanel.add(catTextField);
-      menuPanel.add(getCatButton);
-      menuPanel.add(saveCatButton);
-      menuPanel.add(catPane);
-
+      // menuPanel.add(singleCatRadio);
+      // menuPanel.add(groupCatRadio);
+      mainPanel.add(catTextField);
+      this.add(getCatButton);
+      // menuPanel.add(saveCatButton);
       mainPanel.add(catLabel);
-      mainPanel.add(menuPanel);
+      mainPanel.add(catPane);
+
+      // mainPanel.add(menuPanel);
 
       this.add(mainPanel);
 
-      buttonGroup.add(singleCatRadio);
-      buttonGroup.add(groupCatRadio);
+      // buttonGroup.add(singleCatRadio);
+      // buttonGroup.add(groupCatRadio);
    }
 
    private void setupLayout(){
       layout.putConstraint(SpringLayout.NORTH, mainPanel, 20, SpringLayout.NORTH, this);
-      layout.putConstraint(SpringLayout.EAST, mainPanel, -20, SpringLayout.EAST, this);
+      layout.putConstraint(SpringLayout.EAST, mainPanel, -600, SpringLayout.EAST, this);
       layout.putConstraint(SpringLayout.SOUTH, mainPanel, -20, SpringLayout.SOUTH, this);
       layout.putConstraint(SpringLayout.WEST, mainPanel, 20, SpringLayout.WEST, this);
    }
@@ -106,6 +106,7 @@ public class WebPanel extends JPanel {
       ImageIcon catPicture = null;
 
       try {
+         URL catURL = app.getCatImageURL(catDetails);
          BufferedImage image = ImageIO.read(app.getCatImageURL(catDetails));
          if (image != null){
             catPicture = new ImageIcon(image);

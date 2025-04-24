@@ -19,7 +19,7 @@ public class DataFrame extends JFrame {
 
    private void setupFrame(){
       this.setTitle("Data Structure Project");
-      this.setSize(1280, 720);
+      this.setSize(1470, 920);
       this.setResizable(false);
       this.setDefaultCloseOperation(EXIT_ON_CLOSE);
       this.setContentPane(panel);
